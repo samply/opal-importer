@@ -54,8 +54,11 @@ def create_exporter_url():
 
 
 def create_params():
-  return {'query': 'Patient', 'query-format': 'FHIR_QUERY',
-          'template-id': 'ccp', 'output-format': 'CSV'}
+  query = opal_importer.config.env('EXPORTER_QUERY')
+  query_format = opal_importer.config.env('EXPORTER_QUERY_FORMAT')
+  template_id = opal_importer.config.env('EXPORTER_TEMPLATE_ID')
+  return {'query': query, 'query-format': query_format,
+          'template-id': template_id, 'output-format': 'CSV'}
 
 
 def create_headers():
